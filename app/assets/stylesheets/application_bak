@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "config/variables";
+@import "config/bootstrap_variables";
+@import 'bootstrap-sprockets';
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "layout/index";
+@import "components/index";
+@import "pages/index";
+@import "vendor/index";

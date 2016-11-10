@@ -1,0 +1,20 @@
+<h1> A New Dose!! </h1>
+
+<% if @dose.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @dose.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<h3>I want to add some:</h3>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description, label: 'How do you want to add it?' %>
+  <%= f.association :ingredient, label: 'Pick an ingredient' %>
+  <%= f.submit "Add Dose!!", class: "btn btn-primary" %>
+<% end %>
