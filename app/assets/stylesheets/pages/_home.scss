@@ -5,14 +5,32 @@
 
 
 .strip {
-  margin-top: -20px;
-  margin-bottom: -20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
 }
 
 .strip:hover {
   background-color: #ededed;
+  opacity: 100;
 }
 
 .banner {
 
+}
+
+body {
+  color: black;
+}
+
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.strip-elements {
+  position: relative;
 }

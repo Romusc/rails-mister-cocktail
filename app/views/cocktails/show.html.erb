@@ -1,25 +1,57 @@
 <h1><%= @cocktail.name %></h1>
 
+<%= cl_image_tag @cocktail.photo, height: 300, width: 300, :border=>"12px_solid_rgb:000", :opacity=>100, :radius=>5, :crop=>"fill" %>
+
+ <br>
+ <hr>
+
 <% @cocktail.doses.each do |dose| %>
  <div>
   <%= dose.description %>
  </div>
- <br>
  <hr>
 <% end %>
 
-<br>
-<hr>
-
-<div>
-  <%= link_to 'Back to the List!', cocktails_path, class: 'btn btn-primary'  %>
+<div class="">
+  <ul class="list-inline">
+    <li>
+      <%= link_to 'Back to the List!', cocktails_path, class: 'btn btn-primary'  %>
+    </li>
+    <li>
+      <%= link_to 'Add a new dose!', new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %>
+    </li>
+  </ul>
 </div>
 
-<br>
-<hr>
+<%= link_to 'Back', cocktails_path %>
+
+
+<h4> Add Review </h4>
+
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for [@cocktail, @review] do |f| %>
+  <%= f.input :description, label: 'Share your thoughts!' %>
+  <%= f.submit "Add Review!!", class: "btn btn-primary" %>
+<% end %>
+
+
+<% @reviews.each do |review| %>
+  <%= review.description %>
+  <br>
+<% end %>
+
 
 <div>
-  <%= link_to 'Add a new dose!', new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %>
+
 </div>
 
 

@@ -1,26 +1,40 @@
 <div class="banner">
   <div class="banner-text">
-  <h1 class="text-center">Cocktails List</h1>
+    <h1 class="text-center">The Cocktails</h1>
   </div>
 </div>
 
-<hr>
 
-<%= link_to "Create a cocktail", new_cocktail_path, class: 'btn btn-info' %>
+<%= link_to "Create a cocktail", new_cocktail_path, class: 'btn btn-info full-width' %>
 
-<hr>
 
-<% @cocktails.each do |cocktail|%>
+<% @cocktails.reverse.each do |cocktail|%>
 
-  <div class="strip">
-    <h4> <%= cocktail.name %>
-    <%= link_to 'Details', cocktail, class: 'btn btn-primary index-button' %>
-    <%= link_to 'Delete', cocktails_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary index-button' %>
-    </h4>
-  </div>
+<!--   <div class="strip list-inline"> -->
 
-  <hr>
+    <% if cocktail[:photo] %>
+      <div class="strip list-inline" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path cocktail.photo, height: 300, width: 1500, opacity: 50, crop: :fill %>)">
+
+        <div class="strip-elements">
+          <h4> <%= cocktail.name %>
+          <%= link_to "", cocktail, {class: "card-link"} %>
+          <%= link_to 'Delete', cocktails_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger index-button' %> </h4>
+        </div>
+      </div>
+    <% else %>
+      <div class="strip list-inline">
+        <div class="strip-elements">
+          <h4> <%= cocktail.name %>
+          <%= link_to "", cocktail, {class: "card-link"} %>
+          <%= link_to 'Delete', cocktails_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger index-button' %> </h4>
+        </div>
+      </div>
+    <% end %>
+
+
+
 
 <% end %>
+
 
 
